@@ -34,22 +34,21 @@ begin
                     end if;
                 when D =>
                     if w = '0' then y <= A;
-                    else y <= B;
+                    else y <= E;
+                    end if;
+                when E =>
+                    if w = '0' then y <= A;
+                    else y <= C;
                     end if;
             end case;
         end if ;
     end process;
 
     -- logica de saida
-    process(w, y)
+    process(y)
     begin
-        case y is
-            when D =>
-                if w = '1' then z <= '1';
-                else z <= '0';
-                end if;
-            when others =>
-                z <= '0';
-        end case;
+        if y = E then z <= '1';
+        else z <= '0';
+        end if;
     end process;
 end behaviour;
